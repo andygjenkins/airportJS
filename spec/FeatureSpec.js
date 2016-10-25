@@ -41,4 +41,14 @@ describe("Feature Test:", function() {
       expect(airport.planes.length).toEqual(1);
     });
   });
+  describe("capacity", function(){
+    it('prevents landing when full', function(){
+      spyOn(airport, 'checkWeather').and.returnValue("sunny");
+      for (var n = 0; n < airport.capacity + 1; n++) {
+        airport.landPlane(plane)
+      }
+      expect(airport.planes.length).toEqual(airport.capacity)
+    });
+  });
+
 });
