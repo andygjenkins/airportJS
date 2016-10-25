@@ -1,5 +1,4 @@
 function Airport(){
-  // var planes = [];
 }
 
 var planes = [];
