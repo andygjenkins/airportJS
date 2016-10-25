@@ -24,17 +24,10 @@ describe("Airport", function() {
     });
   });
   describe("weather", function(){
-    beforeEach(function(){
-      weather = {
-        setWeather: function(value) {
-          stormy = value;
-        }
-      };
-      spyOn(weather, 'setStormy').and.callThrough();
-    });
+
 
     it("blocks landing in stormy weather", function(){
-      weather.setWeather("stormy");
+      spyOn(Math, 'random').and.returnValue(0.5);
       airport.landPlane(plane);
       expect(planes.length).toEqual(0);
     });
