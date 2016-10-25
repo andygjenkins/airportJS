@@ -1,5 +1,7 @@
-var Airport = function Airport(){
-}
+'use strict';
+
+function Airport(){}
+
 
 var planes = [];
 // var weather = "sunny";

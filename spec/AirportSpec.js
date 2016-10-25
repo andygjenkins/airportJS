@@ -1,35 +1,18 @@
+'use strict';
+
 describe("Airport", function() {
-
   var airport;
-  var plane = "Test";
-
+  var plane;
   beforeEach(function(){
     airport = new Airport();
+    plane = new Plane();
   });
-
-  describe("it has planes", function(){
-    it("starts with 0 planes", function(){
-      expect(planes.length).toEqual(0);
-    });
-
-    it("gets a plane if a plane lands", function(){
-      airport.landPlane(plane);
-      expect(planes.length).toEqual(1);
-    });
-
-    it("allows a plane to take off", function(){
-      airport.landPlane(plane);
-      airport.takeOff(plane);
-      expect(planes.length).toEqual(0);
-    });
+  it('can instruct planes to land', function(){
+    expect(airport.landPlane).not.toBeUndefined();
   });
-  describe("weather", function(){
-
-
-    it("blocks landing in stormy weather", function(){
-      spyOn(Math, 'random').and.returnValue(0.5);
-      airport.landPlane(plane);
-      expect(planes.length).toEqual(0);
-    });
+  it('moves planes to a hangar once landed', function(){
+    spyOn(airport, 'checkWeather').and.returnValue("sunny");
+    airport.landPlane(plane);
+    expect(planes.length).toEqual(1);
   });
 });
