@@ -3,7 +3,7 @@ function Airport(){
 
 var planes = [];
 
-Airport.prototype.land_plane =function(plane){
+Airport.prototype.landPlane =function(plane){
   planes.push(plane);
   return planes;
 }
