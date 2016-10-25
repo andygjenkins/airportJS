@@ -13,6 +13,6 @@ describe("Airport", function() {
   it('moves planes to a hangar once landed', function(){
     spyOn(airport, 'checkWeather').and.returnValue("sunny");
     airport.landPlane(plane);
-    expect(planes.length).toEqual(1);
+    expect(airport.planes.length).toEqual(1);
   });
 });

@@ -1,29 +1,34 @@
 'use strict';
 
-function Airport(){}
+function Airport(){this.planes = [];}
 
 
-var planes = [];
+
 // var weather = "sunny";
 
-Airport.prototype.planes = function() {
-  return planes;
-}
-
-Airport.prototype.landPlane =function(plane) {
+Airport.prototype.landPlane = function(plane) {
   var weather = this.checkWeather();
   if (weather === "stormy") {
     return "cannot land";
   } else {
-    planes.push(plane);
+    this.planes.push(plane);
   }
 }
 
 Airport.prototype.takeOff = function(plane) {
-  planes.splice(plane);
+  var weather = this.checkWeather();
+  if (weather === "stormy") {
+    return "cannot take off";
+  } else {
+    this.planes.splice(plane);
+  }
 }
 
 Airport.prototype.checkWeather = function() {
+  setInterval(this.generateWeather(), 60000)
+}
+
+Airport.prototype.generateWeather = function() {
   if (Math.random() < 0.5) {
     return "stormy";
   } else {
